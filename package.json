@@ -1,0 +1,17 @@
+{
+  "name": "test_app_with_react",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Jon Dotsoy <hi@jon.soy>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "page": "^1.6.4",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  }
+}
