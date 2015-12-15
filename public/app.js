@@ -22,9 +22,9 @@ Promise.all([
 
 	var findparameterByRegexp = /^\/(.+)\/(.+)\/(.+)$/.exec(document.location.pathname);
 
-	var action = findparameterByRegexp[1];
-	var numbera = findparameterByRegexp[2];
-	var numberb = findparameterByRegexp[3];
+	var action = decodeURIComponent(findparameterByRegexp[1]);
+	var numbera = decodeURIComponent(findparameterByRegexp[2]);
+	var numberb = decodeURIComponent(findparameterByRegexp[3]);
 
 	var changeValue = function (type, value) {
 		switch (type) {
