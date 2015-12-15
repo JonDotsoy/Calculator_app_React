@@ -22,10 +22,30 @@ var calculator = React.createClass({
 		return 0;
 	},
 
+	componentWillReceiveProps: function (nexProps) {
+		this.setState({
+			fNumber: nexProps["first-number"],
+			sNumber: nexProps["second-number"],
+			action: nexProps["action"],
+		});
+	},
+
+	changesValue: function (nameState, event) {
+		var toState = {};
+		toState[nameState] = event.target.value;
+
+		if (typeof(this.props.onChange) == "function") {
+			this.props.onChange(nameState, event.target.value);
+		}
+
+		this.setState(toState);
+	},
+
 	render: function () {
 		var styleContainer = {
 			"margin": "0px 40px",
 		};
+
 		var styleInput = {
 	    "width": "100%",
 	    "backgroundColor": "white",
@@ -35,6 +55,7 @@ var calculator = React.createClass({
 	    "color": "#464646",
 	    "border": "solid 1px #868686",
 		};
+
 		var styleText = {
 			textAlign: "center",
 	    margin: "20px 0px",
@@ -53,10 +74,10 @@ var calculator = React.createClass({
 
 				// Container to firt value
 				DOM.div({className: "first-value"},
-					DOM.input({placeholder: "Primer Numero", type: "number", style: styleInput, defaultValue: this.state.fNumber})
+					DOM.input({placeholder: "Primer Numero", type: "number", onChange: this.changesValue.bind(this, "fNumber"), style: styleInput, value: this.state.fNumber})
 				),
 				DOM.div({className: "action"},
-					DOM.select({style: styleInput, defaultValue: this.state.action},
+					DOM.select({style: styleInput, onChange: this.changesValue.bind(this, "action"), value: this.state.action},
 						DOM.option({value: "+"}, "[+] Suma"),
 						DOM.option({value: "-"}, "[-] Resta"),
 						DOM.option({value: "x"}, "[x] Multiplicación"),
@@ -64,12 +85,12 @@ var calculator = React.createClass({
 					)
 				),
 				DOM.div({className: "second-value"},
-					DOM.input({placeholder: "Segundo Numero", type: "number", style: styleInput, defaultValue: this.state.sNumber})
+					DOM.input({placeholder: "Segundo Numero", type: "number", onChange: this.changesValue.bind(this, "sNumber"), style: styleInput, value: this.state.sNumber})
 				),
 				// Divider Results
 				DOM.hr(null),
 				DOM.div({className: "result"},
-					DOM.input({placeholder: "Resultado", disabled: "disabled", style: styleInput, defaultValue: calculatedValue})
+					DOM.input({placeholder: "Resultado", disabled: "disabled", style: styleInput, value: calculatedValue})
 				)
 			)
 		);
