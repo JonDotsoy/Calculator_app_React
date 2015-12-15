@@ -13,6 +13,20 @@ app.get("/", function (req, res) {
 	));
 });
 
+app.get("/:action/:numbera/:numberb", function (req, res) {
+
+	res.send(ReactDOMServer.renderToStaticMarkup(
+
+		CalculatorElement({
+			"first-number": req.params.numbera,
+			"second-number": req.params.numberb,
+			"action": req.params.action,
+		})
+
+	));
+
+});
+
 
 var server = app.listen(80, function () {
   var host = server.address().address;

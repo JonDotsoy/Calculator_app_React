@@ -14,10 +14,10 @@ var calculator = React.createClass({
 
 	calculateValues: function (action, a, b) {
 		switch (action) {
-			case "+": return a + b; break;
-			case "-": return a - b; break;
-			case "x": return a * b; break;
-			case "/": return a / b; break;
+			case "+": return Number(a) + Number(b); break;
+			case "-": return Number(a) - Number(b); break;
+			case "x": return Number(a) * Number(b); break;
+			case "/": return Number(a) / Number(b); break;
 		}
 		return 0;
 	},
