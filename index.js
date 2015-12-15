@@ -1,9 +1,16 @@
 var express = require("express");
 var app = express();
+var React = require("react");
+var ReactDOMServer = require("react-dom/server");
+var CalculatorElement = React.createFactory(require("./react/calculator"));
 
 
 app.get("/", function (req, res) {
-	res.send("Wellcome to Calculator");
+	res.send(ReactDOMServer.renderToStaticMarkup(
+
+		CalculatorElement({})
+
+	));
 });
 
 
