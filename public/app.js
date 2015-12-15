@@ -32,7 +32,7 @@ Promise.all([
 			case "fNumber": numbera = (value||0); break;
 			case "sNumber": numberb = (value||0); break;
 		}
-		page("/" + encodeURIComponent(action) + "/" + numbera + "/" + numberb);
+		page("/" + encodeURIComponent(action) + "/" + encodeURIComponent(numbera) + "/" + encodeURIComponent(numberb));
 	}
 
 	ReactDOM.render(React.createElement(calculator, {
